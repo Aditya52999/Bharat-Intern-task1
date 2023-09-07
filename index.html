@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <style>
+    label{
+      font-size: 1.5rem;
+    }
+    input{
+      padding: 10px;
+      width: 30vw;
+    }
+    button{
+      padding: 5px;
+      font-size: 1.4rem;
+      margin-bottom: 5vh;
+    }
+    h2{
+      font-size: 2rem;
+    }
+    .container-ftok{
+      background-color:red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div className='container-ftok' style="border:3px solid black;text-align: center;">
+    <h2 >All the three conversion of temperature units and you have to enter any one and other units will be calculated</h2>
+    <br /><br />
+    <label htmlFor='ftoc'>Farenheit</label>
+    <input type='text' name='ftoc' id="farenheit"></input><br /><br />
+    <label htmlFor='ftok'>Celsius</label>
+    <input type='text' name='ftok' id="celsius"></input><br /><br />
+    <label htmlFor='ftok'>Kelvin</label>
+    <input type='text' name='ftok' id="kelvin"></input><br /><br />
+    <button onclick="display()">Calculate</button>
+    <button onclick="clr()">Clear</button>
+  </div>
+  <script>
+
+    function clr() {
+      let text1 = document.getElementById('farenheit')
+      let text2 = document.getElementById('celsius')
+      let text3 = document.getElementById('kelvin')
+      text1.value = ""
+      text3.value = ""
+      text2.value = ""
+    }
+    function display() {
+
+      let text1 = document.getElementById('farenheit')
+      let text2 = document.getElementById('celsius')
+      let text3 = document.getElementById('kelvin')
+
+      if (text1.value != '') {
+        let num = (Number(text1.value) - 32) * 5 / 9;
+        let num1 = (Number(text1.value) - 32) * 5 / 9 + 273.15;
+        text2.value = num;
+        text3.value = num1;
+      }
+
+      else if (text2.value != '') {
+        let num2 = (Number(text2.value)) * (9 / 5) + 32;
+        let num3 = (Number(text2.value)) + 273.15;
+        text1.value = num2;
+        text3.value = num3;
+
+      }
+      else if (text3.value != '') {
+        let num4 = (Number(text3.value) - 273.15) * 9 / 5 + 32;
+        let num5 = (Number(text3.value)) - 273.15;
+        text1.value = num4;
+        text2.value = num5;
+
+      }
+      else {
+        alert("Invalid command")
+      }
+    }
+
+  </script>
+</body>
+
+</html>
